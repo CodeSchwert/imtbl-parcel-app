@@ -15,16 +15,13 @@ const config = {
   // cacheDirectory: "/private/var/folders/y3/rdd7gb9946jc12zmz1c84r8c0000gn/T/jest_dx",
 
   // Automatically clear mock calls, instances, contexts and results before every test
-  clearMocks: true,
 
   // Indicates whether the coverage information should be collected while executing the test
-  collectCoverage: true,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   // collectCoverageFrom: undefined,
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: "coverage",
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -96,9 +93,6 @@ const config = {
   // moduleNameMapper: {
   //   "@imtbl/sdk/config": ["<rootDir>/node_modules/@imtbl/sdk/dist/config.js",]
   // },
-  moduleNameMapper: {
-    "@imtbl/sdk": "<rootDir>/node_modules/@imtbl/sdk/dist/config",
-  },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
@@ -154,7 +148,6 @@ const config = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: "jsdom",
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -184,7 +177,6 @@ const config = {
 
   // A map from regular expressions to paths to transformers
 
-
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
   //   "/node_modules/(?!@imtbl/sdk)"
@@ -202,15 +194,24 @@ const config = {
   // Whether to use watchman for file crawling
   // watchman: true,
 
-  preset: 'ts-jest',
-  moduleDirectories: ['node_modules', '<rootDir>/src'],
+  clearMocks: true,
+  collectCoverage: true,
+  coverageDirectory: "coverage",
+
+  preset: "ts-jest",
+  testEnvironment: "jsdom",
+  moduleDirectories: ["node_modules", "<rootDir>/src"],
+  moduleNameMapper: {
+    "@imtbl/sdk/config": "<rootDir>/node_modules/@imtbl/sdk/dist/config",
+    "@imtbl/sdk/passport": "<rootDir>/node_modules/@imtbl/sdk/dist/passport",
+  },
   transform: {
-    '^.+\\.(ts|tsx)?$': 'ts-jest',
-    '^.+\\.(js|jsx)$': 'babel-jest',
+    "^.+\\.(ts|tsx)?$": "ts-jest",
+    "^.+\\.(js|jsx)$": "babel-jest",
   },
   transformIgnorePatterns: [
-    '/node_modules/',
-    '^.+\\.module\\.(css|sass|scss)$',
+    "node_modules/(?!uuid|(?!deck.gl)|ng-dynamic)",
+    "^.+\\.module\\.(css|sass|scss)$",
   ],
 };
 
